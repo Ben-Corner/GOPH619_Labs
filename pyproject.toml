@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "619LabFunctions"
+version = "0.0.1"
+authors = [
+	{name = "Ben Corner", email = "Ben.Corner88@gmail.com"},
+]
+description = "Code for GOPH 619 Labs"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+	"numpy",
+	"matplotlib",
+]
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"Operating System :: OS Independent",
+	"License :: OSI Approved :: GNU General Public License v3",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Ben-Corner/GOPH619_Examples"
+
