@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/619LabFunctions/__init__.py
+src/619LabFunctions/function.py
+src/619LabFunctions.egg-info/PKG-INFO
+src/619LabFunctions.egg-info/SOURCES.txt
+src/619LabFunctions.egg-info/dependency_links.txt
+src/619LabFunctions.egg-info/requires.txt
+src/619LabFunctions.egg-info/top_level.txt

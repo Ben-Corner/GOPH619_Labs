@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: 619LabFunctions
+Version: 0.0.1
+Summary: Code for GOPH 619 Labs
+Author-email: Ben Corner <Ben.Corner88@gmail.com>
+Project-URL: Homepage, https://github.com/Ben-Corner/GOPH619_Examples
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# GOPH619 - Advanced Computational Methods for Geopysicists
+*Labs*
+*Semestion:* Winter 2023
+*Author:* Ben Corner

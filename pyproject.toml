@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "619LabFunctions"
+name = "619Labs"
 version = "0.0.1"
 authors = [
 	{name = "Ben Corner", email = "Ben.Corner88@gmail.com"},
@@ -22,5 +22,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/Ben-Corner/GOPH619_Examples"
+"Homepage" = "https://github.com/Ben-Corner/GOPH619_Labs"
 
