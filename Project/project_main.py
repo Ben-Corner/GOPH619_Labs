@@ -2,40 +2,70 @@
 #Numerical solutions to 1D and 2D Acoustic Wave Equation
 import numpy as np
 import matplotlib.pyplot as plt
-###Test for matlab from wikiseg
-# Initialization
-Nx = 101      
-dx = 1         
-x= np.arange(0,Nx-1,dx)
-mpx = (Nx+1)/2; 
-                                
-T = 1001      
-f = 10        
-dt = 0.001  
-t= np.arange(0,T-1,dt)
-v = 500
-c = v*(dt/dx)
-U = np.zeros([T,Nx]) 
-s1 = int(np.floor(T/f))
+from matplotlib import animation
+from matplotlib.animation import PillowWriter
 
-####
-U[0,:] = np.sin(2*np.pi*f*t[0:s1+1])
-# U((1:s1),1) = sin(2*pi*f.*t(1:s1));
-# U((1:s1),2) = sin(2*pi*f.*t(1:s1));
-for j in range(T):
-    for i in range(1,Nx-1):
-            U1 = 2*U[j,i] - U[j-1,i]
-            U2 = U[j,i-1] - 2* U[j,i] + U[j,i+1]
-            U[j,i] = U1 + c*U2
-# for j = 3:T
-#     for i = 2:Nx-1
-#         U1 = 2*U(j-1,i)-U(j-2,i);
-#         U2 = U(j-1,i-1)-2*U(j-1,i)+U(j-1,i+1);
-#         U(j,i) = U1 + c*c.*U2;    
-#     end                   
-# end
-###########
+
+
+
+
+############
+def gaussian(x,sigma,mu):
+    return 1/(np.sqrt(2*np.pi*sigma)) * np.exp(-((x-mu)**2)/2)
+x = np.linspace(-10,10,1000)
+sigma = 1
+mu = 0
+
+#############
+#Stability condition
+#c*(dt/dx)<1
+c0 = 343. #m/s
+dx = 0.5 #m
+dt = 0.001 #s
+stab = c0 *(dt/dx)
+if stab < 1:
+    print("Stability condition passes:", stab)
+else:
+    print("Stability condition too large:", stab)
+
+##############
+#Initialization
+Nx = 1000
+Nt = 1001
+
+isrc = 500 #Source location
+ir = 730 #Reveiver location
+f0 = 40
+t0 = 4. / f0
+src = np.zeros(Nt+1)
+time = np.linspace(0,Nt*dt,Nt)
+src = src  = -2. * (time - t0) * (f0 ** 2) * (np.exp(-1.0 * (f0 ** 2) * (time - t0) ** 2))
+
+p = np.zeros(Nx)
+p_old = np.zeros(Nx)
+p_new = np.zeros(Nx)
+d2px = np.zeros(Nx)
+
+c = np.zeros(Nx)
+c = c + c0
+
+x = np.arange(Nx)
+x = x * dx
+
+seis = np.zeros(Nt)
+
+
+for i in range(Nt//2):
+    for j in range(1,Nx-2):
+        d2px[j] = (p[j+1] - 2* p[j] + p[j-1])/ dx**2
+
+    p_new = 2 * p - p_old + c**2 * dt**2 *d2px
+
+    p_new[isrc] = p_new[isrc] +src[i] / (dx) * dt **2
+    
+    p_old, p = p, p_new
+
+    # seis[i] = p[ir]
+    
+
 if __name__ == "__main__":
-    plt.plot(x,U[0,:]-1)
-    plt.show()
-    print(U[0,:].shape)
